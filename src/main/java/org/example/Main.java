@@ -30,17 +30,25 @@ public class Main {
         //Search by book title
         String searchTitle = "The Handmaid's Tale";
 
-        System.out.println("\nSearching by book title '" + searchTitle + "':");
-        List<Book> searchResult = library.searchByTitle(searchTitle);
-        for (Book book : searchResult) {
-            System.out.println("\nTitle: " + book.getTitle() + "\nAuthor: " + book.getAuthor() +
-                    "\nISBN Number: " + book.getIsbnNum() + "\nYear of Publication: " + book.getPublicationDate() + "\n");
+        if (library.hasBookWithTitle(searchTitle)) {
+            System.out.println("\nSearching by book title '" + searchTitle + "':");
+            List<Book> searchResult = library.searchByTitle(searchTitle);
+            for (Book book : searchResult) {
+                System.out.println("\nTitle: " + book.getTitle() + "\nAuthor: " + book.getAuthor() +
+                        "\nISBN Number: " + book.getIsbnNum() + "\nYear of Publication: " + book.getPublicationDate() + "\n");
+            }
+        } else {
+            System.out.println("\nBook by title '" + searchTitle + "' not in the library.");
         }
 
         // Delete by ISBN
         String isbnToDelete = "978-1-234567-93-7";
-        System.out.println("\nISBN Number of deleted book: '" + isbnToDelete);
-        library.removeBookByISBN(isbnToDelete);
+
+        if (library.removeBookByISBN(isbnToDelete)) {
+            System.out.println("\nDelete by ISBN number '" + isbnToDelete + "': \nBook removed successfully.");
+        } else {
+            System.out.println("Book with this ISBN '" + isbnToDelete + "' not in the library .");
+        }
 
         // Updated book list
         System.out.println("\nUpdated book list:");

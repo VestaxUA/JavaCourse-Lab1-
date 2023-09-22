@@ -32,7 +32,23 @@ public class Library {
         }
         return result;
     }
-    public void removeBookByISBN (String isbnNum) {
-        books.removeIf(book -> book.getIsbnNum().equals(isbnNum));
+
+    public boolean hasBookWithTitle(String title) {
+        for (Book book : books) {
+            if (book.getTitle().equalsIgnoreCase(title)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean removeBookByISBN (String isbnNum) {
+        for (Book book : books) {
+            if (book.getIsbnNum().equals(isbnNum)) {
+                books.remove(book);
+                return true;
+            }
+        }
+        return false;
     }
 }
