@@ -23,5 +23,19 @@ public class Main {
         library.addBook(book6);
         library.addBook(book7);
 
+        //Display
+        System.out.println("Display all books in library:\n");
+        library.displayBook();
+
+        //Search by book title
+        String searchTitle = "The Handmaid's Tale";
+
+        System.out.println("\nSearching by book title '" + searchTitle + "':");
+        List<Book> searchResult = library.searchByTitle(searchTitle);
+        for (Book book : searchResult) {
+            System.out.println("\nTitle: " + book.getTitle() + "\nAuthor: " + book.getAuthor() +
+                    "\nISBN Number: " + book.getIsbnNum() + "\nYear of Publication: " + book.getPublicationDate() + "\n");
+        }
+
     }
 }
