@@ -37,5 +37,14 @@ public class Main {
                     "\nISBN Number: " + book.getIsbnNum() + "\nYear of Publication: " + book.getPublicationDate() + "\n");
         }
 
+        // Delete by ISBN
+        String isbnToDelete = "978-1-234567-93-7";
+        System.out.println("\nISBN Number of deleted book: '" + isbnToDelete);
+        library.removeBookByISBN(isbnToDelete);
+
+        // Updated book list
+        System.out.println("\nUpdated book list:");
+        library.displayBook();
+
     }
 }
